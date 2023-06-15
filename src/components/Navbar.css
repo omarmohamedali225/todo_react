@@ -1,0 +1,3 @@
+.navbar-toggler:is(:hover,:focus){
+  box-shadow: none;
+}

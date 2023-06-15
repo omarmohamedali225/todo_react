@@ -1,0 +1,5 @@
+.card :is(h5,p){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
