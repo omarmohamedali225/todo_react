@@ -1,20 +1,17 @@
 import React from "react";
 import "./ToDo.css";
 import { useRef,useState } from "react";
+import { useLocal } from "./context/GlobalContext";
 const ToDo = () => {
   const Name = useRef();
   const Note = useRef();
   const [msg,setMsg] = useState('')
   const [statemsg,setStateMsg] = useState(false)
   const [alert,setAlert] = useState('success')
+  const { Add } = useLocal()
+
 
   const Save = () => {
-    const local = JSON.parse(localStorage.getItem("Note")) || [];
-    const Item = {
-      id:new Date().getTime(),
-      Name: Name.current.value,
-      Note: Note.current.value,
-    };
     if (!Name.current.value) {
       setAlert('danger')
       setStateMsg(true)
@@ -24,15 +21,16 @@ const ToDo = () => {
       setStateMsg(true)
       setMsg('Note Empty');
     }else{
-      const newNote = [...local, Item];
-      localStorage.setItem("Note", JSON.stringify(newNote));
-      Name.current.value = "";
-      Note.current.value = "";
+      Add(Name.current.value,Note.current.value)
       setAlert('success')
       setMsg('Note Add Success')
       setStateMsg(true)
+      Name.current.value = ''
+      Note.current.value =''
     }
   };
+
+  
   return (
     <div className="container">
       <header>

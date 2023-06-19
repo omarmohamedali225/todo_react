@@ -9,6 +9,11 @@ import './index.css'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 function index(){
+  setInterval(()=>{
+    if(!localStorage.getItem('Note')){
+      localStorage.setItem('Note',JSON.stringify([]));
+    }
+  },1)
   return(
     <Router>
       <Navbar/>
@@ -16,6 +21,5 @@ function index(){
     </Router>
   )
 }
-
 
 root.render(index())

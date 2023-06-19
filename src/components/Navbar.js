@@ -17,18 +17,19 @@ const Navbar = () => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={()=>nav ? setNav(false) : setNav(true)}
           >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className={nav ? "collapse navbar-collapse show" : "collapse navbar-collapse"} id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item p-2">
-              <Link className="nav-link active" aria-current="page" to={'/'}>
+              <Link className="nav-link active" aria-current="page" to={'/'} onClick={()=>setNav(false)}>
                 Home
               </Link>
             </li>
             <li className="nav-item p-2">
-              <Link className="nav-link" to={'/note'}>
+              <Link className="nav-link" to={'/note'} onClick={()=>setNav(false)}>
                 Note
               </Link>
             </li>

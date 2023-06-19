@@ -26,9 +26,7 @@ const Card = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        Del(i)
-        const filter = data.filter((item)=>item.id!=i.id)
-        setData(filter)
+        setData(Del(i))
       }
     });
   };
